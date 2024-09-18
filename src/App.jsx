@@ -13,7 +13,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/explore" element={<Explore />} />
-        <Route path="/author" element={<Author />} />
+        {/* Update the route to include the dynamic parameter :authorId */}
+        <Route path="/author/:authorId" element={<Author />} />
         {/* Update the route to include the dynamic parameter :nftId */}
         <Route path="/item-details/:nftId" element={<ItemDetails />} />
       </Routes>
