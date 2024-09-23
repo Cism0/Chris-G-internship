@@ -6,6 +6,7 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 
 import AuthorImage from "../../images/author_thumbnail.jpg";
 import nftImage from "../../images/nftImage.jpg";
+import Skeleton from "../UI/Skeleton";
 
 const HotCollections = () => {
   const [collections, setCollections] = useState([]);
@@ -51,18 +52,19 @@ const HotCollections = () => {
       {new Array(4).fill(0).map((_, index) => (
         <div className="item" key={index}>
           <div className="nft_coll">
-            <div className="nft_wrap skeleton skeleton-img"></div>
+            <Skeleton width="100%" height="200px" borderRadius="10px" />
             <div className="nft_coll_pp">
-              <div className="skeleton skeleton-author"></div>
+              <Skeleton width="50px" height="50px" borderRadius="50%" />
             </div>
             <div className="nft_coll_info">
-              <div className="skeleton skeleton-info"></div>
+              <Skeleton width="80%" height="20px" />
             </div>
           </div>
         </div>
       ))}
     </OwlCarousel>
   );
+  
 
   return (
     <section id="section-collections" className="no-bottom">

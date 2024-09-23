@@ -1,9 +1,9 @@
 import React from "react";
 
-const Skeleton = ({ width, height, borderRadius }) => {
+const Skeleton = ({ width, height, borderRadius, className = "" }) => {
   return (
     <div
-      className="skeleton-box"
+      className='skeleton-box'
       style={{
         width,
         height,

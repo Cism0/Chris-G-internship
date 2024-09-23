@@ -16749,26 +16749,6 @@ img {
 }
 
 /* Skeleton loader styling */
-/* Skeleton Styles */
-.skeleton {
-  background-color: #ccc;
-  border-radius: 4px;
-  margin: 10px 0;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite linear;
-}
-
-/* Add some shimmer effect to skeleton */
-
-@keyframes shimmer {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
-}
 
 .skeleton-img {
   width: 100%;
