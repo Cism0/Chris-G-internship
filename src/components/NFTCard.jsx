@@ -116,7 +116,7 @@ const NFTCard = ({ item }) => {
     // Simulate a loading delay with setTimeout (e.g., 2 seconds)
     const timeout = setTimeout(() => {
       setLoading(false); // Set loading to false after data "loads"
-    }, 1000);
+    }, 2000);
 
     // Start countdown for time remaining
     const interval = setInterval(() => {

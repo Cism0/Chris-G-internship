@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-
 import AuthorImage from "../../images/author_thumbnail.jpg";
 import nftImage from "../../images/nftImage.jpg";
 import Skeleton from "../UI/Skeleton";
@@ -95,7 +94,8 @@ const HotCollections = () => {
                       </Link>
                     </div>
                     <div className="nft_coll_pp">
-                      <Link to="/author">
+                      {/* Include authorId in the URL */}
+                      <Link to={`/author/${collection.authorId}`}>
                         <img
                           className="lazy pp-coll"
                           src={collection.authorImage || AuthorImage}
