@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-import NFTCard from "../NFTCard"; // Import reusable NFTCard component
+import NFTCard from "../NFTCard";
 import Skeleton from "../UI/Skeleton";
 
 const NewItems = () => {
@@ -10,7 +10,6 @@ const NewItems = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch the new items from the API
   useEffect(() => {
     const fetchNewItems = async () => {
       try {
@@ -32,7 +31,6 @@ const NewItems = () => {
     fetchNewItems();
   }, []);
 
-  // OwlCarousel options for responsiveness and navigation
   const carouselOptions = {
     loop: true,
     margin: 10,
@@ -47,17 +45,15 @@ const NewItems = () => {
     },
   };
 
-  // Skeleton loader for showing while data is loading
-  
-const SkeletonLoader = () => (
-  <OwlCarousel className="owl-theme" {...carouselOptions}>
-    {new Array(4).fill(0).map((_, index) => (
-      <div className="item" key={index}>
-        <Skeleton className="skeleton-img" height="250px" />
-      </div>
-    ))}
-  </OwlCarousel>
-);
+  const SkeletonLoader = () => (
+    <OwlCarousel className="owl-theme" {...carouselOptions}>
+      {new Array(4).fill(0).map((_, index) => (
+        <div className="item" key={index}>
+          <Skeleton className="skeleton-img" height="250px" />
+        </div>
+      ))}
+    </OwlCarousel>
+  );
 
   return (
     <section id="section-items" className="no-bottom">
@@ -71,14 +67,14 @@ const SkeletonLoader = () => (
           </div>
 
           {loading ? (
-            <SkeletonLoader /> // Show skeleton loader during data fetch
+            <SkeletonLoader />
           ) : error ? (
             <div className="col-12 text-center text-danger">Error: {error}</div>
           ) : (
             <OwlCarousel className="owl-theme" {...carouselOptions}>
               {newItems.map((item) => (
                 <div className="item" key={item.id}>
-                  <NFTCard item={item} /> {/* Reusable NFT card component */}
+                  <NFTCard item={item} />
                 </div>
               ))}
             </OwlCarousel>

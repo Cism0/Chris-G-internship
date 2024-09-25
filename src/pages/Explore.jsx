@@ -1,48 +1,47 @@
 import React, { useState, useEffect } from "react";
 import SubHeader from "../images/subheader.jpg";
-import NFTCard from "../components/NFTCard"; 
+import NFTCard from "../components/NFTCard";
 import Skeleton from "../components/UI/Skeleton";
 
 const Explore = () => {
-  const [items, setItems] = useState([]); // All preloaded NFTs
-  const [visibleItems, setVisibleItems] = useState(8); // Number of NFTs initially visible
+  const [items, setItems] = useState([]);
+  const [visibleItems, setVisibleItems] = useState(8);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null); // Error state
-  const [filter, setFilter] = useState(''); // Filter state for API
+  const [error, setError] = useState(null);
+  const [filter, setFilter] = useState("");
 
-  // Base URL for the API
-  const apiUrl = "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore";
+  const apiUrl =
+    "https://us-central1-nft-cloud-functions.cloudfunctions.net/explore";
 
-  // Fetch NFTs based on filter value
   useEffect(() => {
     const fetchExploreItems = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`${apiUrl}${filter ? `?filter=${filter}` : ''}`);
+        const response = await fetch(
+          `${apiUrl}${filter ? `?filter=${filter}` : ""}`
+        );
         if (!response.ok) {
           throw new Error(`Failed to fetch: ${response.statusText}`);
         }
         const data = await response.json();
-        setItems(data); // Set all NFTs in state
+        setItems(data);
         setLoading(false);
       } catch (error) {
-        setError(error.message); // Set error message if fetch fails
+        setError(error.message);
         setLoading(false);
       }
     };
 
     fetchExploreItems();
-  }, [filter]); // Re-fetch data whenever filter changes
+  }, [filter]);
 
-  // Handle clicking the "Load More" button to reveal 4 more preloaded NFTs
   const revealMoreItems = () => {
     setVisibleItems((prevVisibleItems) => prevVisibleItems + 4);
   };
 
-  // Handle filter change
   const handleFilterChange = (e) => {
-    setFilter(e.target.value); // Update filter based on dropdown selection
-    setVisibleItems(8); // Reset visible items when filter changes
+    setFilter(e.target.value);
+    setVisibleItems(8);
   };
 
   if (loading) {
@@ -65,9 +64,7 @@ const Explore = () => {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-12 text-center text-danger">
-            Error: {error}
-          </div>
+          <div className="col-12 text-center text-danger">Error: {error}</div>
         </div>
       </div>
     );
@@ -96,7 +93,6 @@ const Explore = () => {
         <section aria-label="section">
           <div className="container">
             <div className="row">
-              {/* Dropdown menu for filter selection */}
               <div className="col-2 mb-4">
                 <select
                   className="form-select"
@@ -112,12 +108,15 @@ const Explore = () => {
             </div>
             <div className="row">
               {items.slice(0, visibleItems).map((item) => (
-                <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={item.id}>
-                  <NFTCard item={item} /> {/* Reusable NFT card */}
+                <div
+                  className="col-lg-3 col-md-6 col-sm-6 col-xs-12"
+                  key={item.id}
+                >
+                  <NFTCard item={item} />
                 </div>
               ))}
             </div>
-            {/* Load More / Reveal More button */}
+
             {visibleItems < items.length && (
               <div className="col-12 text-center">
                 <button className="btn-main" onClick={revealMoreItems}>
@@ -125,7 +124,7 @@ const Explore = () => {
                 </button>
               </div>
             )}
-            {/* End of collection message */}
+
             {visibleItems >= items.length && (
               <div className="col-12 text-center">
                 <small>End of Collection</small>

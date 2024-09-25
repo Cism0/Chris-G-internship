@@ -45,7 +45,7 @@ const HotCollections = () => {
       1024: { items: 4 }, // 4 NFTs for screens 1024px and up (desktops)
     },
   };
-  // Skeleton loader
+
   const SkeletonLoader = () => (
     <OwlCarousel className="owl-theme" {...options}>
       {new Array(4).fill(0).map((_, index) => (
@@ -63,7 +63,6 @@ const HotCollections = () => {
       ))}
     </OwlCarousel>
   );
-  
 
   return (
     <section id="section-collections" className="no-bottom">
@@ -94,7 +93,6 @@ const HotCollections = () => {
                       </Link>
                     </div>
                     <div className="nft_coll_pp">
-                      {/* Include authorId in the URL */}
                       <Link to={`/author/${collection.authorId}`}>
                         <img
                           className="lazy pp-coll"
@@ -105,7 +103,6 @@ const HotCollections = () => {
                       <i className="fa fa-check"></i>
                     </div>
                     <div className="nft_coll_info">
-                      {/* Include nftId in the title link */}
                       <Link to={`/item-details/${collection.nftId}`}>
                         <h4>{collection.title}</h4>
                       </Link>
