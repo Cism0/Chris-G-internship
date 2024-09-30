@@ -28,7 +28,7 @@ const TopSellers = () => {
 
   // Timeout to simulate skeleton loading for troubleshooting
   useEffect(() => {
-    const timeout = setTimeout(() => setLoading(false), 2000);
+    const timeout = setTimeout(() => setLoading(false), 0);
     return () => clearTimeout(timeout); // Clean up the timeout
   }, []);
 

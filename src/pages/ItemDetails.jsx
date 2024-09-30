@@ -31,7 +31,7 @@ const ItemDetails = () => {
           setError(error.message); // Set error message in state
           setLoading(false); // Update loading state
         }
-      }, 2000); // Simulate a network delay for skeleton loading effect
+      }, 0); // Simulate a network delay for skeleton loading effect
     };
 
     fetchNftDetails(); // Call the function to fetch NFT details
