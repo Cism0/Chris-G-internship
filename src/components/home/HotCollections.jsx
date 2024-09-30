@@ -34,7 +34,7 @@ const HotCollections = () => {
           console.error("Error fetching collections:", error);
           setLoading(false); // Ensure loading state is reset on error
         }
-      }, 0); // Delay for loading effect
+      }, 2000); // Delay for loading effect
     };
 
     fetchCollections();

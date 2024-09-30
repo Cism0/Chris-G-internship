@@ -58,8 +58,8 @@ const NFTCard = ({ item }) => {
         {/* Placeholder skeleton for the NFT image */}
         <Skeleton width="100%" height="300px" />
         <div className="author_list_pp">
-          {/* Placeholder skeleton for the author profile picture */}
-          <Skeleton width="50px" height="50px" borderRadius="50%" />
+          {/* Placeholder skeleton for the author profile picture, WAS NOT FUNCTIONING, removed it and the loading state works appropriately without it
+          <Skeleton width="50px" height="50px" borderRadius="50%" /> */}
         </div>
         <div className="nft__item_info">
           {/* Placeholder skeleton for the NFT title */}
