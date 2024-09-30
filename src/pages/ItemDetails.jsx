@@ -31,7 +31,7 @@ const ItemDetails = () => {
           setError(error.message); // Set error message in state
           setLoading(false); // Update loading state
         }
-      }, 0); // Simulate a network delay for skeleton loading effect
+      }, 2000); // Simulate a network delay for skeleton loading effect
     };
 
     fetchNftDetails(); // Call the function to fetch NFT details
@@ -97,8 +97,10 @@ const ItemDetails = () => {
     description,
     ownerImage,
     ownerName,
+    ownerId,
     creatorImage,
     creatorName,
+    creatorId,
     price
   } = nftDetails;
 
@@ -136,7 +138,7 @@ const ItemDetails = () => {
                       <h6>Owner</h6>
                       <div className="item_author">
                         <div className="author_list_pp">
-                          <Link to={`/author/${ownerName}`}> {/* Link to the owner's page */}
+                          <Link to={`/author/${ownerId}`}> {/* Link to the owner's page */}
                             <img
                               className="lazy"
                               src={ownerImage || AuthorImagePlaceholder} // Use owner's image or placeholder
@@ -146,7 +148,7 @@ const ItemDetails = () => {
                           </Link>
                         </div>
                         <div className="author_list_info">
-                          <Link to={`/author/${ownerName}`}>{ownerName}</Link> {/* Display owner's name as a link */}
+                          <Link to={`/author/${ownerId}`}>{ownerName}</Link> {/* Display owner's name as a link */}
                         </div>
                       </div>
                     </div>
@@ -157,7 +159,7 @@ const ItemDetails = () => {
                       <h6>Creator</h6>
                       <div className="item_author">
                         <div className="author_list_pp">
-                          <Link to={`/author/${creatorName}`}> {/* Link to the creator's page */}
+                          <Link to={`/author/${creatorId}`}> {/* Link to the creator's page */}
                             <img
                               className="lazy"
                               src={creatorImage || AuthorImagePlaceholder} // Use creator's image or placeholder
@@ -167,7 +169,7 @@ const ItemDetails = () => {
                           </Link>
                         </div>
                         <div className="author_list_info">
-                          <Link to={`/author/${creatorName}`}>{creatorName}</Link> {/* Display creator's name as a link */}
+                          <Link to={`/author/${creatorId}`}>{creatorName}</Link> {/* Display creator's name as a link */}
                         </div>
                       </div>
                     </div>
