@@ -59,16 +59,16 @@ const ItemDetails = () => {
                     </div>
                     <Skeleton width="100%" height="20px" count={3} />
                     <div className="d-flex flex-row">
-                      <div className="mr40">
+                      <div className="mr60">
                         <h6>Owner</h6>
                         <Skeleton width="50px" height="50px" borderRadius="50%" />
-                        <Skeleton width="80px" height="20px" />
+                        <Skeleton width="120px" height="20px" marginLeft="10px"/>
                       </div>
                     </div>
                     <div className="de_tab tab_simple">
                       <h6>Creator</h6>
                       <Skeleton width="50px" height="50px" borderRadius="50%" />
-                      <Skeleton width="80px" height="20px" />
+                      <Skeleton width="120px" height="20px" marginLeft="10px"/>
                     </div>
                     <div className="spacer-40"></div>
                     <h6>Price</h6>
@@ -88,7 +88,7 @@ const ItemDetails = () => {
     return <div>Error: {error}</div>;
   }
 
-  // Destructuring the needed data from nftDetails
+  // Destructuring the needed data from nftDetails, including ownerId and creatorId
   const {
     nftImage,
     title,
@@ -97,11 +97,11 @@ const ItemDetails = () => {
     description,
     ownerImage,
     ownerName,
-    ownerId,
     creatorImage,
     creatorName,
-    creatorId,
-    price
+    price,
+    ownerId, // Add ownerId from API data
+    creatorId // Add creatorId from API data
   } = nftDetails;
 
   return (
@@ -138,7 +138,7 @@ const ItemDetails = () => {
                       <h6>Owner</h6>
                       <div className="item_author">
                         <div className="author_list_pp">
-                          <Link to={`/author/${ownerId}`}> {/* Link to the owner's page */}
+                          <Link to={`/author/${ownerId}`}> {/* Link to the owner's page using ownerId */}
                             <img
                               className="lazy"
                               src={ownerImage || AuthorImagePlaceholder} // Use owner's image or placeholder
@@ -159,7 +159,7 @@ const ItemDetails = () => {
                       <h6>Creator</h6>
                       <div className="item_author">
                         <div className="author_list_pp">
-                          <Link to={`/author/${creatorId}`}> {/* Link to the creator's page */}
+                          <Link to={`/author/${creatorId}`}> {/* Link to the creator's page using creatorId */}
                             <img
                               className="lazy"
                               src={creatorImage || AuthorImagePlaceholder} // Use creator's image or placeholder
@@ -190,4 +190,4 @@ const ItemDetails = () => {
   );
 };
 
-export default ItemDetails; 
+export default ItemDetails;
